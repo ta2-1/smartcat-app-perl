@@ -36,7 +36,7 @@ sub get_project {
         $self->{api}
           ->project_get( project_id => $self->{rundata}->{project_id} );
     };
-    die $log->error(
+    carp $log->error(
         sprintf(
             "Failed to get project '%s'.\nError:\n%s",
             $self->{rundata}->{project_id},
@@ -82,7 +82,7 @@ sub get_all_projects {
 
     $log->info("Getting all projects...");
     my $projects = eval { $self->{api}->project_get_all; };
-    die $log->error(
+    carp $log->error(
         sprintf( "Failed to get all projects.\nError:\n%s",
             format_error_message($@) )
     ) unless $projects;
