@@ -46,6 +46,7 @@ sub init {
     my $self = shift;
 
     $self->{api} = Smartcat::Client::ApiClient->new(
+        base_url => $self->{config}->base_url,
         username => $self->{config}->username,
         password => $self->{config}->password
     );

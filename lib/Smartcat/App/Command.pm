@@ -10,6 +10,7 @@ use File::Basename;
 sub opt_spec {
     return (
         #[ 'config:s' => 'Config file path' ],
+        [ 'base-url:s' => 'Smartcat API server URL (default is "https://smartcat.ai")' ],
         [ 'token-id:s' => 'Smartcat account id' ],
         [ 'token:s'    => 'API token' ],
         [ 'log:s'      => 'Log file path' ],
@@ -73,6 +74,9 @@ sub validate_args {
     my $app     = $self->app;
     my $rundata = $self->app->{rundata};
 
+    if ( defined $opt->{base_url} ) {
+        $app->{config}->{base_url} = $opt->{base_url};
+    }
     if ( defined $opt->{token_id} && defined $opt->{token} ) {
         $app->{config}->{username} = $opt->{token_id};
         $app->{config}->{password} = $opt->{token};

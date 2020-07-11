@@ -78,6 +78,7 @@ sub cat {
 
 __PACKAGE__->attribute_map(
     {
+        'base_url' => 'base_url',
         'username' => 'token_id',
         'password' => 'token',
         'log'      => 'log'
